@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let'z Energy Gum — O 1º chiclete energético do Brasil</title>
+<meta name="description" content="Cafeína + taurina + B6 e B12 em uma goma zero açúcar. Energia prática pra treino, trabalho e rotina. Sem lata, sem pó, sem fila de café.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Let'z Energy Gum — Energia que você masca">
+<meta property="og:description" content="O primeiro chiclete energético do Brasil. Cafeína, taurina, B6 e B12. Zero açúcar.">
+<meta property="og:image" content="img/pacote-letz.png">
+<link rel="icon" href="img/logo-letz.png">
+
+<!-- Tipografia da marca (fallback system-ui garante funcionamento offline) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   LET'Z ENERGY GUM — SITE COMPLETO
+   Estrutura: carcaça aprovada (15 seções)
+   Identidade: pink #FF1493 · off-white #F9F9F4 · volt #C1FF00
+               verde #3BDB8B · rosa claro #F979E0 · dark #141916
+   Tipografia: Space Grotesk (display) + Inter (corpo)
+   ============================================================ */
+:root{
+  --pink:#FF1493;
+  --pink-soft:#F979E0;
+  --paper:#F9F9F4;
+  --volt:#C1FF00;
+  --green:#3BDB8B;
+  --ink:#141916;
+  --ink-soft:#4a514c;
+  --card:#ffffff;
+  --r:18px;
+  --r-lg:26px;
+  --shadow:0 10px 30px rgba(20,25,22,.10);
+  --shadow-pink:0 14px 34px rgba(255,20,147,.28);
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --pad:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);background:var(--paper);color:var(--ink);
+  line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.025em}
+h1{font-size:clamp(2.1rem,8vw,3.8rem);font-weight:700}
+h2{font-size:clamp(1.65rem,6vw,2.7rem);font-weight:700}
+h3{font-size:1.1rem;font-weight:700}
+.muted{color:var(--ink-soft)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.45em;
+  font-family:var(--display);font-weight:700;font-size:.8rem;
+  text-transform:uppercase;letter-spacing:.14em;
+}
+.dot{width:.42em;height:.42em;border-radius:50%;background:var(--volt);display:inline-block;flex:none;box-shadow:0 0 0 3px rgba(193,255,0,.25)}
+
+/* ---------- Botões (squish de chiclete) ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font-family:var(--display);font-weight:700;font-size:1rem;
+  padding:.95em 1.8em;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;text-align:center;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,background .18s;
+}
+.btn:hover{transform:scale(1.05,.95)}
+.btn:active{transform:scale(.96,1.04)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn-volt{background:var(--volt);color:var(--ink);box-shadow:0 12px 28px rgba(193,255,0,.35)}
+.btn-volt:hover{background:#cfff33}
+.btn-pink{background:var(--pink);color:#fff;box-shadow:var(--shadow-pink)}
+.btn-dark{background:var(--ink);color:var(--volt)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-block{width:100%}
+
+/* ---------- 00 · Announcement marquee ---------- */
+.announce{background:var(--ink);color:var(--volt);overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--display);font-weight:700;font-size:.82rem}
+.marquee{display:inline-flex;gap:3em;animation:mq 22s linear infinite;padding-right:3em}
+.marquee span{display:inline-flex;gap:3em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- 01 · Header sticky (hide/show) ---------- */
+.header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(249,249,244,.92);backdrop-filter:blur(10px);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.header.hide{transform:translateY(-110%)}
+.header.scrolled{box-shadow:0 4px 18px rgba(20,25,22,.08)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.75rem;padding-bottom:.75rem}
+.header .logo{height:32px;width:auto}
+.nav-d{display:none;gap:1.6rem;font-weight:600;font-size:.92rem}
+.nav-d a{text-decoration:none;color:var(--ink-soft);transition:color .15s}
+.nav-d a:hover{color:var(--pink)}
+.h-actions{display:flex;align-items:center;gap:.9rem}
+.cart{position:relative;width:38px;height:38px;border-radius:50%;background:var(--card);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+.cart:hover{transform:scale(1.08)}
+.cart b{position:absolute;top:-4px;right:-4px;background:var(--pink);color:#fff;font-size:.62rem;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.header .btn{font-size:.85rem;padding:.6em 1.3em}
+
+/* ---------- 02 · Pills de ocasião ---------- */
+.pills{display:flex;gap:.6rem;overflow-x:auto;padding:1rem var(--pad);scrollbar-width:none;max-width:1160px;margin:0 auto}
+.pills::-webkit-scrollbar{display:none}
+.pill{
+  flex:none;padding:.55em 1.3em;border-radius:999px;
+  background:var(--card);box-shadow:var(--shadow);
+  font-family:var(--display);font-size:.85rem;font-weight:700;cursor:pointer;white-space:nowrap;
+  text-decoration:none;transition:transform .15s,background .15s,color .15s;
+}
+.pill:hover{transform:translateY(-2px);background:var(--ink);color:var(--volt)}
+
+/* ---------- 03 · Hero ---------- */
+.hero{padding:2.6rem 0 0;overflow:hidden}
+.hero .wrap{display:flex;flex-direction:column;gap:1.5rem;align-items:center;text-align:center}
+.hero-copy{display:flex;flex-direction:column;gap:1rem;align-items:center;max-width:640px}
+.hero-badge{
+  background:var(--ink);color:var(--volt);
+  font-family:var(--display);font-weight:700;font-size:.76rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.5em 1.2em;border-radius:999px;transform:rotate(-1.5deg);
+}
+.hero h1 .hl{color:var(--pink)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.chip{
+  display:inline-flex;align-items:center;gap:.4em;
+  background:var(--card);border:1.5px solid rgba(20,25,22,.10);
+  border-radius:999px;padding:.4em 1em;font-size:.8rem;font-weight:600;
+}
+.chip svg{width:13px;height:13px;flex:none}
+.hero-ctas{display:flex;flex-direction:column;gap:.7rem;width:100%;max-width:330px}
+.hero-note{font-size:.78rem;color:var(--ink-soft)}
+.hero-img{
+  width:min(74vw,420px);margin-top:.4rem;
+  filter:drop-shadow(0 30px 40px rgba(255,20,147,.25));
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+
+/* ---------- 04 · Vitrine de vídeos ---------- */
+.sec{padding:3.6rem 0}
+.rail-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
+.rail-nav{display:flex;gap:.5rem}
+.rail-nav button{
+  width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--ink);color:var(--volt);font-size:1.1rem;font-weight:700;
+  transition:transform .15s;
+}
+.rail-nav button:hover{transform:scale(1.1)}
+.rail{
+  display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 var(--pad) 1rem;scrollbar-width:none;cursor:grab;
+  max-width:1160px;margin:0 auto;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.vcard{
+  flex:none;width:min(60vw,230px);aspect-ratio:9/16;
+  border-radius:var(--r);scroll-snap-align:start;position:relative;
+  overflow:hidden;transition:transform .2s ease;
+  background:linear-gradient(160deg,var(--pink) 0%,var(--pink-soft) 100%);
+}
+.vcard:nth-child(even){background:linear-gradient(160deg,var(--ink) 0%,#2a332c 100%)}
+.vcard:hover{transform:scale(1.03)}
+.vcard.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .vtag{
+  position:absolute;top:.7rem;left:.7rem;
+  background:rgba(255,255,255,.92);border-radius:999px;
+  font-size:.62rem;font-weight:700;padding:.3em .8em;letter-spacing:.06em;text-transform:uppercase;
+}
+.vcard .play{
+  position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;
+  background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow);transition:transform .2s;
+}
+.vcard:hover .play{transform:scale(1.12)}
+.play svg{width:20px;height:20px;margin-left:3px}
+.vcard .mini{
+  position:absolute;left:.6rem;right:.6rem;bottom:.6rem;
+  background:rgba(255,255,255,.95);border-radius:12px;padding:.5rem .65rem;
+  display:flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:600;color:var(--ink);
+}
+.mini img{width:30px;height:30px;border-radius:8px;object-fit:cover;flex:none;background:var(--paper)}
+.mini .cta-mini{margin-left:auto;background:var(--pink);color:#fff;border-radius:999px;padding:.35em .8em;white-space:nowrap;font-family:var(--display);font-weight:700}
+
+/* ---------- 05 · Marquee de claims ---------- */
+.claims{
+  background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;padding:.85em 0;
+  font-family:var(--display);font-weight:700;font-size:1.05rem;
+  text-transform:uppercase;letter-spacing:.07em;
+  transform:rotate(-1.4deg) scale(1.02);
+}
+
+/* ---------- 06 · Vitrine de produtos ---------- */
+.grid-p{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.8rem}
+.pcard{
+  background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:.85rem;display:flex;flex-direction:column;gap:.55rem;
+  position:relative;transition:transform .2s ease,box-shadow .2s ease;overflow:hidden;
+}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(20,25,22,.14)}
+.badge{
+  position:absolute;top:1rem;left:1rem;z-index:2;
+  background:var(--pink);color:#fff;font-family:var(--display);font-size:.6rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;
+  transform:rotate(-2deg);
+}
+.badge.soon{background:var(--ink);color:var(--volt)}
+.pmedia{aspect-ratio:1/1;border-radius:12px;position:relative;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pmedia img{width:82%;height:82%;object-fit:contain}
+.pmedia .swap{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:var(--paper);opacity:0;transition:opacity .25s ease;
+}
+.pmedia .swap img{width:92%;height:92%;object-fit:cover;border-radius:10px}
+.pcard:hover .swap{opacity:1}
+.pmedia.soon-ph{background:repeating-linear-gradient(-45deg,#efefe9 0 12px,#e6e6df 12px 24px)}
+.pmedia.soon-ph span{font-family:var(--display);font-weight:700;color:#b9b9b0;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
+.stars{font-size:.75rem;color:#f0a52e;letter-spacing:.08em}
+.stars small{color:var(--ink-soft);margin-left:.35em}
+.pname{font-family:var(--display);font-size:.95rem;font-weight:700;line-height:1.25}
+.pprice{font-family:var(--display);font-weight:700}
+.pprice small{font-size:.75rem;color:var(--ink-soft);font-weight:500}
+.qadd{position:absolute;left:.85rem;right:.85rem;bottom:.85rem;transform:translateY(150%);transition:transform .22s ease}
+.pcard:hover .qadd{transform:translateY(0)}
+.qadd .btn{width:100%;padding:.7em;font-size:.85rem}
+
+/* ---------- 07 · Benefícios + números do rótulo ---------- */
+.sec-tint{background:#f1f1ea}
+.bene{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.8rem}
+.bcard{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:.55rem}
+.bicon{
+  width:44px;height:44px;border-radius:13px;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+}
+.bicon svg{width:22px;height:22px}
+.bcard p{font-size:.85rem;color:var(--ink-soft)}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2.2rem;text-align:center}
+.counter b{font-family:var(--display);font-size:clamp(1.7rem,6vw,2.6rem);font-weight:700;display:block;color:var(--pink)}
+.counter small{font-size:.74rem;color:var(--ink-soft);line-height:1.35;display:block}
+.counters-note{text-align:center;font-size:.7rem;color:var(--ink-soft);margin-top:1rem}
+
+/* ---------- 08 · História ---------- */
+.split{display:flex;flex-direction:column;gap:1.8rem;align-items:center}
+.split-img{width:100%;max-width:440px;border-radius:var(--r-lg);box-shadow:0 18px 40px rgba(20,25,22,.25)}
+.split-txt{display:flex;flex-direction:column;gap:.9rem;max-width:520px}
+
+/* ---------- 09 · Onde encontrar ---------- */
+.press{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:1.6rem}
+.press .plogo{
+  width:132px;height:46px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:700;font-size:.68rem;color:#b9b9b0;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+
+/* ---------- 10 · Reviews (esteira) ---------- */
+.rev-belt{overflow:hidden;margin-top:1.8rem}
+.rev-track{display:flex;gap:.9rem;width:max-content;animation:mq 42s linear infinite}
+.rev-belt:hover .rev-track{animation-play-state:paused}
+.rcard{
+  flex:none;width:290px;background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:1.3rem;display:flex;flex-direction:column;gap:.6rem;
+}
+.rcard p{font-size:.88rem}
+.ravatar{display:flex;align-items:center;gap:.6rem;margin-top:.3rem}
+.ravatar .av{
+  width:36px;height:36px;border-radius:50%;flex:none;
+  background:linear-gradient(135deg,var(--pink),var(--pink-soft));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--display);font-weight:700;font-size:.85rem;
+}
+.ravatar b{font-family:var(--display);font-size:.82rem;display:block}
+.ravatar small{font-size:.68rem;color:var(--ink-soft)}
+
+/* ---------- 11 · Oferta ---------- */
+.kits{display:grid;gap:1.1rem;margin-top:2rem;text-align:left}
+.kcard{
+  background:var(--card);border-radius:var(--r-lg);box-shadow:var(--shadow);
+  padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;
+  position:relative;border:2px solid transparent;
+}
+.kcard.best{border-color:var(--pink);box-shadow:var(--shadow-pink)}
+.kflag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-1.5deg);
+  background:var(--pink);color:#fff;font-family:var(--display);font-size:.66rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:.4em 1.1em;border-radius:999px;white-space:nowrap;
+}
+.kmedia{aspect-ratio:16/10;border-radius:14px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.kmedia img{height:88%;object-fit:contain}
+.kmedia.multi img{height:78%}
+.kcard h3{font-size:1.2rem}
+.kqty{font-size:.82rem;color:var(--ink-soft);font-weight:500}
+.kprice{font-family:var(--display);font-size:1.7rem;font-weight:700;line-height:1.1}
+.kprice small{font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.kwas{font-size:.82rem;color:var(--ink-soft);text-decoration:line-through}
+.ksave{align-self:flex-start;background:rgba(59,219,139,.16);color:#1d7a4b;font-weight:700;font-size:.74rem;padding:.3em .9em;border-radius:999px}
+.kcard ul{list-style:none;display:grid;gap:.45rem;font-size:.85rem;color:var(--ink-soft)}
+.kcard ul li{display:flex;gap:.5em;align-items:flex-start}
+.kcard ul svg{width:16px;height:16px;flex:none;margin-top:.2em}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem}
+.trust>div{background:var(--card);border-radius:var(--r);padding:1.1rem .8rem;text-align:center;box-shadow:var(--shadow)}
+.trust svg{width:26px;height:26px;margin:0 auto .5rem}
+.trust b{font-family:var(--display);font-size:.82rem;display:block;line-height:1.25}
+.trust small{font-size:.7rem;color:var(--ink-soft)}
+
+/* ---------- 12 · Newsletter ---------- */
+.news{
+  background:var(--ink);color:var(--paper);border-radius:var(--r-lg);
+  padding:2.6rem 1.5rem;text-align:center;
+  display:flex;flex-direction:column;gap:1rem;align-items:center;
+  position:relative;overflow:hidden;
+}
+.news::before{
+  content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;
+  border-radius:50%;background:var(--volt);opacity:.14;
+}
+.news h2 .hl{color:var(--volt)}
+.news p{color:rgba(249,249,244,.75);font-size:.92rem}
+.news form{display:flex;flex-direction:column;gap:.6rem;width:100%;max-width:400px;position:relative;z-index:1}
+.news input{
+  padding:.95em 1.3em;border-radius:999px;border:none;font-size:.95rem;outline:none;
+  font-family:var(--body);
+}
+.news input:focus{box-shadow:0 0 0 3px var(--volt)}
+.news small{font-size:.68rem;color:rgba(249,249,244,.5)}
+
+/* ---------- 13 · FAQ ---------- */
+.faq{max-width:720px;margin:1.8rem auto 0;display:grid;gap:.7rem}
+.faq details{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.faq summary{
+  cursor:pointer;list-style:none;font-family:var(--display);font-weight:700;font-size:.98rem;
+  padding:1.1rem 3rem 1.1rem 1.3rem;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);
+  font-family:var(--display);font-weight:700;font-size:1.4rem;color:var(--pink);
+  transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .a{padding:0 1.3rem 1.2rem;font-size:.9rem;color:var(--ink-soft)}
+
+/* ---------- 14 · Footer ---------- */
+.footer{background:var(--ink);color:rgba(249,249,244,.8);padding:3rem 0 7rem;margin-top:3.5rem;font-size:.86rem}
+.footer .wrap{display:flex;flex-direction:column;gap:1.5rem}
+.footer .logo{height:30px;width:auto}
+.fcols{display:grid;gap:.4rem}
+.fcol details{border-bottom:1px solid rgba(249,249,244,.12)}
+.fcol summary{cursor:pointer;list-style:none;font-family:var(--display);font-weight:700;color:var(--paper);padding:.9rem 0;position:relative}
+.fcol summary::-webkit-details-marker{display:none}
+.fcol summary::after{content:"+";position:absolute;right:0;font-weight:700;color:var(--volt)}
+.fcol details[open] summary::after{content:"–"}
+.fcol ul{list-style:none;padding:0 0 1rem;display:grid;gap:.5rem}
+.fcol a{text-decoration:none}
+.fcol a:hover{color:var(--volt)}
+.legal{font-size:.7rem;color:rgba(249,249,244,.5);border-top:1px solid rgba(249,249,244,.12);padding-top:1.2rem;line-height:1.75}
+
+/* ---------- 15 · Sticky ATC mobile ---------- */
+.satc{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:var(--card);box-shadow:0 -8px 24px rgba(20,25,22,.14);
+  padding:.7rem var(--pad) calc(.7rem + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:.8rem;
+  transform:translateY(110%);transition:transform .3s ease;
+}
+.satc.show{transform:translateY(0)}
+.satc .thumb{width:46px;height:46px;border-radius:12px;background:var(--paper);flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.satc .thumb img{width:86%;height:86%;object-fit:contain}
+.satc .info{line-height:1.2;flex:1;min-width:0}
+.satc .info b{font-family:var(--display);font-size:.88rem;display:block}
+.satc .info small{font-size:.7rem;color:var(--ink-soft)}
+.satc .btn{padding:.75em 1.2em;font-size:.86rem}
+
+/* ---------- Voltar ao topo ---------- */
+.top{
+  position:fixed;right:1rem;bottom:5.6rem;z-index:65;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--pink);color:#fff;font-size:1.15rem;font-weight:700;box-shadow:var(--shadow-pink);
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .15s;
+}
+.top:hover{transform:scale(1.08)}
+.top.show{opacity:1;pointer-events:auto}
+
+/* ---------- Reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============ DESKTOP ============ */
+@media(min-width:768px){
+  .nav-d{display:flex}
+  .grid-p{grid-template-columns:repeat(4,1fr)}
+  .bene{grid-template-columns:repeat(4,1fr)}
+  .kits{grid-template-columns:repeat(3,1fr);align-items:start}
+  .kcard.best{transform:scale(1.04)}
+  .split{flex-direction:row;gap:3.5rem;justify-content:center}
+  .news form{flex-direction:row}
+  .news input{flex:1}
+  .satc{display:none}
+  .top{bottom:1.4rem}
+  .footer{padding-bottom:3rem}
+  .fcols{grid-template-columns:repeat(3,1fr);gap:2rem}
+  .fcol details{border:none}
+  .fcol summary{pointer-events:none}
+  .fcol summary::after{display:none}
+}
+@media(min-width:1024px){
+  .hero{padding-top:4rem}
+  .hero .wrap{flex-direction:row;text-align:left;justify-content:space-between;gap:2rem}
+  .hero-copy{align-items:flex-start}
+  .hero-chips{justify-content:flex-start}
+  .hero-ctas{flex-direction:row;max-width:none}
+  .hero-img{width:400px;margin-top:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 00 · ANNOUNCEMENT MARQUEE ══ -->
+<div class="announce" aria-hidden="true">
+  <div class="marquee">
+    <span>⚡ Enviamos para todo o Brasil &nbsp;·&nbsp; Pix ou cartão em até 3x &nbsp;·&nbsp; O 1º chiclete energético do Brasil ⚡ Enviamos para todo o Brasil &nbsp;·&nbsp; Pix ou cartão em até 3x &nbsp;·&nbsp; O 1º chiclete energético do Brasil</span>
+    <span>⚡ Enviamos para todo o Brasil &nbsp;·&nbsp; Pix ou cartão em até 3x &nbsp;·&nbsp; O 1º chiclete energético do Brasil ⚡ Enviamos para todo o Brasil &nbsp;·&nbsp; Pix ou cartão em até 3x &nbsp;·&nbsp; O 1º chiclete energético do Brasil</span>
+  </div>
+</div>
+
+<!-- ══ 01 · HEADER ══ -->
+<header class="header" id="topo">
+  <div class="wrap">
+    <img class="logo" src="img/logo-letz.png" alt="Let'z Energy Gum">
+    <nav class="nav-d">
+      <a href="#produtos">Produtos</a>
+      <a href="#oferta">Kits</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <div class="h-actions">
+      <div class="cart" title="Carrinho">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141916" stroke-width="2"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <b>0</b>
+      </div>
+      <a href="#oferta" class="btn btn-dark">Comprar</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══ 02 · PILLS DE OCASIÃO ══ -->
+<div class="pills">
+  <a class="pill" href="#pre-treino">🏋️ Pré-treino</a>
+  <a class="pill" href="#trabalho">💼 Trabalho</a>
+  <a class="pill" href="#estudo">📚 Estudo</a>
+  <a class="pill" href="#manha">☀️ Manhãs</a>
+  <a class="pill" href="#oferta">⚡ Kits</a>
+</div>
+
+<!-- ══ 03 · HERO ══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="hero-badge rv">⚡ O 1º chiclete energético do Brasil</span>
+      <h1 class="rv rv-d1">Sua energia agora <span class="hl">se masca.</span></h1>
+      <p class="muted rv rv-d2" style="font-size:clamp(1rem,4vw,1.15rem)">Cafeína + taurina + vitaminas B6 e B12 em uma goma zero açúcar. Pra acordar o corpo em qualquer lugar — <strong>sem lata, sem pó, sem fila de café.</strong></p>
+      <div class="hero-chips rv rv-d2">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Zero açúcar</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Vegano</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Sem glúten</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Refresca o hálito</span>
+      </div>
+      <div class="hero-ctas rv rv-d3">
+        <a href="#oferta" class="btn btn-volt btn-block">Quero experimentar Let'z</a>
+        <a href="#produtos" class="btn btn-ghost btn-block">Ver produtos</a>
+      </div>
+      <p class="hero-note rv rv-d3">Sabor menta · 12 gomas por pacote · Pix ou cartão em até 3x</p>
+    </div>
+    <img class="hero-img rv rv-d1" src="img/pacote-letz.png" alt="Pacote de Let'z Energy Gum sabor menta com 12 unidades" fetchpriority="high">
+  </div>
+</section>
+
+<!-- ══ 04 · VITRINE DE VÍDEOS UGC ══ -->
+<!-- ⚠️ Substituir os cards placeholder pelos vídeos UGC reais (mantendo a estrutura .vcard) -->
+<section class="sec" style="padding-left:0;padding-right:0">
+  <div class="wrap rail-head">
+    <div>
+      <p class="eyebrow rv"><span class="dot"></span>Na rotina de quem masca</p>
+      <h2 class="rv rv-d1">Let'z em movimento</h2>
+    </div>
+    <div class="rail-nav rv">
+      <button data-rail="prev" aria-label="Anterior">←</button>
+      <button data-rail="next" aria-label="Próximo">→</button>
+    </div>
+  </div>
+  <div class="rail" id="rail">
+    <div class="vcard has-img">
+      <img src="img/ativacao-letz.jpg" alt="Ativação Let'z em loja de suplementos">
+      <span class="vtag">Nas lojas</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+    <div class="vcard">
+      <span class="vtag">Vídeo UGC</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+    <div class="vcard">
+      <span class="vtag">Vídeo UGC</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+    <div class="vcard">
+      <span class="vtag">Vídeo UGC</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+    <div class="vcard">
+      <span class="vtag">Vídeo UGC</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+    <div class="vcard">
+      <span class="vtag">Vídeo UGC</span>
+      <div class="play"><svg viewBox="0 0 24 24" fill="#141916"><path d="M7 5v14l12-7z"/></svg></div>
+      <div class="mini"><img src="img/pacote-letz.png" alt=""><span>Let'z Menta</span><a class="cta-mini" href="#oferta">Ver</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 · MARQUEE DE CLAIMS ══ -->
+<div class="claims" aria-hidden="true">
+  <div class="marquee">
+    <span>foco ⚡ energia ⚡ zero açúcar ⚡ masca e vai ⚡ foco ⚡ energia ⚡ zero açúcar ⚡ masca e vai ⚡</span>
+    <span>foco ⚡ energia ⚡ zero açúcar ⚡ masca e vai ⚡ foco ⚡ energia ⚡ zero açúcar ⚡ masca e vai ⚡</span>
+  </div>
+</div>
+
+<!-- ══ 06 · VITRINE DE PRODUTOS ══ -->
+<!-- ⚠️ AJUSTAR preço real + link de checkout (Yampi) · Cards "Em breve" = espaço p/ novos sabores -->
+<section class="sec" id="produtos">
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="dot"></span>Nossa linha</p>
+    <h2 class="rv rv-d1">Escolha a sua mascada</h2>
+    <div class="grid-p">
+      <div class="pcard rv">
+        <span class="badge">Mais vendido</span>
+        <div class="pmedia">
+          <img src="img/pacote-letz.png" alt="Let'z Energy Gum sabor menta">
+          <div class="swap"><img src="img/verso-letz.jpg" alt="Verso do pacote com tabela nutricional"></div>
+        </div>
+        <div class="stars">★★★★★<small>(avaliações)</small></div>
+        <div class="pname">Let'z Energy Gum · Menta</div>
+        <div class="pprice">R$ 34,90 <small>· 12 gomas</small></div>
+        <div class="qadd"><a class="btn btn-pink" href="#oferta">Compra rápida</a></div>
+      </div>
+      <div class="pcard rv rv-d1">
+        <span class="badge soon">Em breve</span>
+        <div class="pmedia soon-ph"><span>Novo sabor</span></div>
+        <div class="stars" style="opacity:.35">★★★★★</div>
+        <div class="pname" style="opacity:.5">Sabor surpresa</div>
+        <div class="pprice" style="opacity:.5">R$ —</div>
+      </div>
+      <div class="pcard rv rv-d2">
+        <span class="badge soon">Em breve</span>
+        <div class="pmedia soon-ph"><span>Novo sabor</span></div>
+        <div class="stars" style="opacity:.35">★★★★★</div>
+        <div class="pname" style="opacity:.5">Sabor surpresa</div>
+        <div class="pprice" style="opacity:.5">R$ —</div>
+      </div>
+      <div class="pcard rv rv-d3">
+        <span class="badge soon">Em breve</span>
+        <div class="pmedia soon-ph"><span>Nova linha</span></div>
+        <div class="stars" style="opacity:.35">★★★★★</div>
+        <div class="pname" style="opacity:.5">Projeto secreto ⚡</div>
+        <div class="pprice" style="opacity:.5">R$ —</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 · BENEFÍCIOS + NÚMEROS DO RÓTULO ══ -->
+<section class="sec sec-tint" id="trabalho">
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="dot"></span>Por que mascar Let'z</p>
+    <h2 class="rv rv-d1">Energia prática pra rotina real</h2>
+    <div class="bene">
+      <div class="bcard rv">
+        <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="#C1FF00" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+        <h3>Sem preparo</h3>
+        <p>Nada de coar, gelar ou misturar. Abriu, mascou, seguiu — a energia entra em cena enquanto você nem parou o que estava fazendo.</p>
+      </div>
+      <div class="bcard rv rv-d1">
+        <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="#C1FF00" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>Cabe no bolso</h3>
+        <p>Mochila, gaveta, pochete de corrida. O pacote vai com você pra qualquer lugar — energia de bolso, literalmente.</p>
+      </div>
+      <div class="bcard rv rv-d2">
+        <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="#C1FF00" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Zero açúcar</h3>
+        <p>Apenas 8 kcal por porção. Energia sem peso na consciência — e sem sabotar a dieta no meio da tarde.</p>
+      </div>
+      <div class="bcard rv rv-d3">
+        <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="#C1FF00" stroke-width="2"><path d="M8 12s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Hálito de brinde</h3>
+        <p>Sabor menta refrescante: enquanto o café mancha e pesa no hálito, o Let'z deixa tudo em dia pra próxima reunião.</p>
+      </div>
+    </div>
+    <div class="counters">
+      <div class="counter rv"><b data-count="75" data-suffix="mg">0</b><small>de cafeína por porção<br>(3 gomas)</small></div>
+      <div class="counter rv rv-d1"><b data-count="180" data-suffix="mg">0</b><small>de taurina pra<br>acompanhar o ritmo</small></div>
+      <div class="counter rv rv-d2"><b data-count="200" data-suffix="%">0</b><small>do valor diário<br>de vitamina B12</small></div>
+    </div>
+    <p class="counters-note rv">Valores por porção de 3 gomas, conforme tabela nutricional da embalagem.</p>
+  </div>
+</section>
+
+<!-- ══ 08 · HISTÓRIA DA MARCA ══ -->
+<!-- ⚠️ Revisar o texto com a história oficial da Let'z antes de publicar -->
+<section class="sec" id="sobre">
+  <div class="wrap split">
+    <img class="split-img rv" src="img/ativacao-letz.jpg" alt="Ativação da Let'z em loja de suplementos, com pessoas experimentando o produto" loading="lazy">
+    <div class="split-txt">
+      <p class="eyebrow rv"><span class="dot"></span>Quem somos</p>
+      <h2 class="rv rv-d1">Nascida em BH. Feita pra quem vive em movimento.</h2>
+      <p class="muted rv rv-d2">A Let'z nasceu em Belo Horizonte com uma pergunta simples: por que energia precisa de lata, pó ou fila de café? Criamos o primeiro chiclete energético do Brasil pra quem corre, treina, estuda e trabalha — e não tem tempo a perder.</p>
+      <p class="muted rv rv-d2">Hoje a Let'z já está nas melhores lojas de suplemento e chega na sua casa em todo o Brasil.</p>
+      <a href="https://instagram.com/letz.gum" target="_blank" rel="noopener" class="btn btn-ghost rv rv-d3" style="align-self:flex-start">Seguir @letz.gum</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 · ONDE ENCONTRAR ══ -->
+<!-- ⚠️ Trocar os placeholders pelos logos reais de lojas parceiras / veículos -->
+<section class="sec" style="padding-top:0" id="estudo">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rv"><span class="dot"></span>Onde a Let'z já chegou</p>
+    <h2 class="rv rv-d1">Nas melhores lojas de suplemento</h2>
+    <div class="press">
+      <div class="plogo rv">Logo parceiro</div>
+      <div class="plogo rv rv-d1">Logo parceiro</div>
+      <div class="plogo rv rv-d2">Logo parceiro</div>
+      <div class="plogo rv rv-d3">Logo parceiro</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10 · REVIEWS (esteira automática) ══ -->
+<!-- ⚠️ Trocar pelos depoimentos REAIS de clientes -->
+<section class="sec" style="padding-left:0;padding-right:0;padding-top:1rem" id="manha">
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="dot"></span>Quem masca, recomenda</p>
+    <h2 class="rv rv-d1">Energia aprovada na rotina real</h2>
+  </div>
+  <div class="rev-belt">
+    <div class="rev-track">
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Deixo um pacote na gaveta do trabalho. Virou meu ritual das 14h — a lombeira nem chega perto."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Belo Horizonte · MG</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Masco duas no caminho da academia. Aposentei a coqueteleira nos treinos leves."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>São Paulo · SP</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Sou de provar tudo que é energético. O diferencial do Let'z é caber no bolso e não ter açúcar."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Curitiba · PR</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Uso antes da corrida de sábado. Prático, gostoso e não pesa no estômago como energético."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Rio de Janeiro · RJ</small></div></div></div>
+      <!-- duplicado p/ loop contínuo -->
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Deixo um pacote na gaveta do trabalho. Virou meu ritual das 14h — a lombeira nem chega perto."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Belo Horizonte · MG</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Masco duas no caminho da academia. Aposentei a coqueteleira nos treinos leves."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>São Paulo · SP</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Sou de provar tudo que é energético. O diferencial do Let'z é caber no bolso e não ter açúcar."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Curitiba · PR</small></div></div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Uso antes da corrida de sábado. Prático, gostoso e não pesa no estômago como energético."</p><div class="ravatar"><div class="av">L</div><div><b>Cliente Let'z</b><small>Rio de Janeiro · RJ</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 · OFERTA (kits) ══ -->
+<!-- ⚠️ AJUSTAR PREÇOS REAIS + LINKS DE CHECKOUT (Yampi) em cada botão -->
+<section class="sec sec-tint" id="oferta">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rv"><span class="dot"></span>Escolha seu ritmo</p>
+    <h2 class="rv rv-d1">Comece a mascar energia hoje</h2>
+    <p class="muted rv rv-d2" style="margin-top:.5rem">Cada pacote tem 12 gomas sabor menta — até 12 momentos de "salvou meu dia".</p>
+
+    <div class="kits">
+      <div class="kcard rv" id="pre-treino">
+        <div class="kmedia"><img src="img/pacote-letz.png" alt="1 pacote Let'z"></div>
+        <h3>Experimente</h3>
+        <span class="kqty">1 pacote · 12 gomas</span>
+        <span class="kprice">R$ 34,90</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Perfeito pra primeira mascada</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Pix ou cartão</li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-block">Quero experimentar</a>
+      </div>
+
+      <div class="kcard best rv rv-d1">
+        <span class="kflag">⚡ Mais vendido</span>
+        <div class="kmedia multi"><img src="img/pacote-letz.png" alt="Kit 3 pacotes Let'z"></div>
+        <h3>Kit Energia</h3>
+        <span class="kqty">3 pacotes · 36 gomas</span>
+        <span class="kwas">De R$ 104,70</span>
+        <span class="kprice">R$ 89,90</span>
+        <span class="ksave">Economize 14%</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Um na mochila, um na gaveta, um em casa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Melhor custo por goma</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Pix ou cartão em até 3x</li>
+        </ul>
+        <a href="#" class="btn btn-pink btn-block">Garantir meu kit</a>
+      </div>
+
+      <div class="kcard rv rv-d2">
+        <div class="kmedia"><img src="img/pacote-letz.png" alt="Assinatura Let'z"></div>
+        <h3>Assinatura</h3>
+        <span class="kqty">3 pacotes todo mês</span>
+        <span class="kprice">R$ 74,90<small>/mês</small></span>
+        <span class="ksave">Melhor preço + nunca fica sem</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Energia chegando sozinha na sua porta</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Pause ou cancele quando quiser</li>
+        </ul>
+        <a href="#" class="btn btn-dark btn-block">Assinar energia</a>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF1493" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        <b>Compra protegida</b><small>Pagamento 100% seguro</small>
+      </div>
+      <div class="rv rv-d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF1493" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 5v4h4"/><path d="M12 7v5l3 3"/></svg>
+        <b>7 dias pra decidir</b><small>Devolução garantida por lei</small>
+      </div>
+      <div class="rv rv-d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF1493" stroke-width="2"><path d="M3 7h13v10H3z"/><path d="M16 10h4l1 3v4h-5"/><circle cx="7" cy="17" r="1.5"/><circle cx="18" cy="17" r="1.5"/></svg>
+        <b>Envio pra todo Brasil</b><small>Rastreio em todas as compras</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 · NEWSLETTER ══ -->
+<!-- ⚠️ Ajustar % do cupom e conectar o form (Yampi / e-mail marketing) -->
+<section class="sec">
+  <div class="wrap">
+    <div class="news rv">
+      <h2>Ganhe <span class="hl">10% OFF</span> na primeira mascada</h2>
+      <p>Deixa teu e-mail que a gente manda o cupom — e nada de spam, prometido.</p>
+      <form onsubmit="return false">
+        <input type="email" placeholder="Seu melhor e-mail" aria-label="E-mail" required>
+        <button class="btn btn-volt" type="submit">Quero o cupom</button>
+      </form>
+      <small>Ao enviar, você concorda em receber nossas novidades. Pode sair quando quiser.</small>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 13 · FAQ ══ -->
+<section class="sec" id="faq" style="padding-top:.5rem">
+  <div class="wrap">
+    <p class="eyebrow rv" style="justify-content:center;display:flex"><span class="dot"></span>Ficou com dúvida?</p>
+    <h2 class="rv rv-d1" style="text-align:center">Perguntas frequentes</h2>
+    <div class="faq">
+      <details class="rv">
+        <summary>Quantas gomas posso mascar por dia?</summary>
+        <div class="a">A recomendação é de até 3 gomas ao dia — essa é a porção completa, com 75mg de cafeína. Nossa dica: comece com 1 e sinta o seu ritmo.</div>
+      </details>
+      <details class="rv rv-d1">
+        <summary>Tem açúcar? Quantas calorias?</summary>
+        <div class="a">Zero açúcar. Cada porção de 3 gomas tem apenas 8 kcal. É energia sem peso na consciência (nem na dieta).</div>
+      </details>
+      <details class="rv rv-d2">
+        <summary>Posso combinar com café?</summary>
+        <div class="a">Pode — só vale somar as fontes de cafeína do seu dia. Cada porção de 3 gomas tem 75mg de cafeína, na faixa de um cafezinho. Se você é sensível à cafeína, vá com calma e evite mascar perto da hora de dormir.</div>
+      </details>
+      <details class="rv rv-d3">
+        <summary>Quem não deve consumir Let'z?</summary>
+        <div class="a">O produto é recomendado para maiores de 19 anos e não deve ser consumido por gestantes, lactantes e crianças. Let'z é um suplemento alimentar, não um medicamento.</div>
+      </details>
+      <details class="rv rv-d3">
+        <summary>Qual o sabor? E a textura?</summary>
+        <div class="a">Sabor menta refrescante — funciona como um chiclete normal e ainda deixa o hálito em dia. Masque enquanto durar o sabor e descarte como qualquer goma.</div>
+      </details>
+      <details class="rv rv-d3">
+        <summary>Como funciona a entrega?</summary>
+        <div class="a">Enviamos para todo o Brasil com código de rastreio. O prazo aparece no checkout de acordo com o seu CEP.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 14 · FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap">
+    <img class="logo" src="img/logo-letz.png" alt="Let'z">
+    <div class="fcols">
+      <div class="fcol">
+        <details open>
+          <summary>Produtos</summary>
+          <ul>
+            <li><a href="#produtos">Let'z Energy Gum · Menta</a></li>
+            <li><a href="#oferta">Kit Energia (3 pacotes)</a></li>
+            <li><a href="#oferta">Assinatura</a></li>
+          </ul>
+        </details>
+      </div>
+      <div class="fcol">
+        <details>
+          <summary>Atendimento</summary>
+          <ul>
+            <li><a href="https://instagram.com/letz.gum" target="_blank" rel="noopener">@letz.gum</a></li>
+            <li><a href="https://letzgum.com.br" target="_blank" rel="noopener">letzgum.com.br</a></li>
+            <li><a href="#faq">Dúvidas frequentes</a></li>
+          </ul>
+        </details>
+      </div>
+      <div class="fcol">
+        <details>
+          <summary>Políticas</summary>
+          <ul>
+            <li><a href="#">Trocas e devoluções</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Termos e condições</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    <p class="legal">
+      Let'z Energy Gum é um suplemento alimentar em goma de mascar. Este produto não é um medicamento. Recomendado para maiores de 19 anos. Não exceder a recomendação diária de consumo indicada na embalagem. Este produto não deve ser consumido por gestantes, lactantes e crianças. Mantenha fora do alcance de crianças. Proteger do calor e da umidade.<br><br>
+      Fabricante: Florestal Alimentos S/A · Indústria Brasileira · letzgum.com.br<br>
+      Let'z © 2026 · Todos os direitos reservados
+    </p>
+  </div>
+</footer>
+
+<!-- ══ 15 · STICKY ADD-TO-CART MOBILE ══ -->
+<div class="satc" id="satc">
+  <div class="thumb"><img src="img/pacote-letz.png" alt=""></div>
+  <div class="info"><b>Kit Energia · 3 pacotes</b><small>R$ 89,90 · Pix ou 3x no cartão</small></div>
+  <a href="#oferta" class="btn btn-pink">Garantir</a>
+</div>
+
+<!-- ══ Voltar ao topo ══ -->
+<button class="top" id="topBtn" aria-label="Voltar ao topo">↑</button>
+
+<script>
+/* ---------- Header: sombra + hide/show ---------- */
+const header=document.getElementById('topo');
+const satc=document.getElementById('satc');
+const topBtn=document.getElementById('topBtn');
+let lastY=0;
+const heroEl=document.querySelector('.hero');
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  const heroH=heroEl.offsetHeight+180;
+  header.classList.toggle('scrolled',y>10);
+  header.classList.toggle('hide',y>lastY&&y>320);
+  satc.classList.toggle('show',y>heroH&&innerWidth<768);
+  topBtn.classList.toggle('show',y>heroH*1.6);
+  lastY=y;
+},{passive:true});
+topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+/* ---------- Reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---------- Contadores (números do rótulo) ---------- */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,end=+el.dataset.count,sfx=el.dataset.suffix||'',t0=performance.now();
+  const tick=t=>{
+    const p=Math.min((t-t0)/1200,1);
+    el.textContent=Math.round(end*(1-Math.pow(1-p,3)))+sfx;
+    if(p<1)requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);cio.unobserve(el);
+}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ---------- Carrossel de vídeos: setas + drag ---------- */
+const rail=document.getElementById('rail');
+const step=()=>rail.querySelector('.vcard').offsetWidth+14;
+document.querySelectorAll('[data-rail]').forEach(b=>{
+  b.addEventListener('click',()=>rail.scrollBy({left:b.dataset.rail==='next'?step():-step(),behavior:'smooth'}));
+});
+let drag=false,startX=0,startL=0;
+rail.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startL=rail.scrollLeft;rail.classList.add('dragging');rail.setPointerCapture(e.pointerId)});
+rail.addEventListener('pointermove',e=>{if(drag)rail.scrollLeft=startL-(e.clientX-startX)});
+['pointerup','pointercancel'].forEach(ev=>rail.addEventListener(ev,()=>{drag=false;rail.classList.remove('dragging')}));
+</script>
+</body>
+</html>
