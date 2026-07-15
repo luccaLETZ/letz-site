@@ -31,7 +31,7 @@ Site institucional e de conversão B2C da **Let'z Energy Gum** — o primeiro ch
 03. Hero (headline + chips de benefício + CTAs + imagem do pacote com float animation)
 04. Vitrine de vídeos UGC (carrossel 9:16, snap scroll, drag, setas)
 05. Marquee de claims (faixa pink rotacionada -1.4deg)
-06. Vitrine de produtos (grid 2col mobile / 4col desktop, hover troca imagem + quick add)
+06. Showcase do produto único (split: galeria com thumbnail clicável + infos e specs nutricionais)
 07. Benefícios + contadores animados (75mg cafeína, 180mg taurina, 200% B12)
 08. História da marca (split: imagem + texto)
 09. Onde encontrar (strip de logos de parceiros — placeholder)

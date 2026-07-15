@@ -197,39 +197,31 @@ h3{font-size:1.1rem;font-weight:700}
   transform:rotate(-1.4deg) scale(1.02);
 }
 
-/* ---------- 06 · Vitrine de produtos ---------- */
-.grid-p{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.8rem}
-.pcard{
-  background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
-  padding:.85rem;display:flex;flex-direction:column;gap:.55rem;
-  position:relative;transition:transform .2s ease,box-shadow .2s ease;overflow:hidden;
-}
-.pcard:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(20,25,22,.14)}
+/* ---------- 06 · Showcase do produto ---------- */
+.pshow{display:flex;flex-direction:column;gap:2rem;margin-top:1.8rem}
+.pshow-gallery{position:relative;display:flex;flex-direction:column;gap:.7rem}
 .badge{
   position:absolute;top:1rem;left:1rem;z-index:2;
   background:var(--pink);color:#fff;font-family:var(--display);font-size:.6rem;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;
   transform:rotate(-2deg);
 }
-.badge.soon{background:var(--ink);color:var(--volt)}
-.pmedia{aspect-ratio:1/1;border-radius:12px;position:relative;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.pmedia img{width:82%;height:82%;object-fit:contain}
-.pmedia .swap{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  background:var(--paper);opacity:0;transition:opacity .25s ease;
-}
-.pmedia .swap img{width:92%;height:92%;object-fit:cover;border-radius:10px}
-.pcard:hover .swap{opacity:1}
-.pmedia.soon-ph{background:repeating-linear-gradient(-45deg,#efefe9 0 12px,#e6e6df 12px 24px)}
-.pmedia.soon-ph span{font-family:var(--display);font-weight:700;color:#b9b9b0;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
+.pshow-media{aspect-ratio:1/1;border-radius:var(--r-lg);background:var(--card);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pshow-media img{width:72%;height:72%;object-fit:contain}
+.pthumbs{display:flex;gap:.6rem}
+.pthumb{width:64px;height:64px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);border:2px solid transparent;padding:0;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .15s}
+.pthumb img{width:100%;height:100%;object-fit:cover}
+.pthumb:hover{transform:translateY(-2px)}
+.pthumb.active{border-color:var(--pink)}
 .stars{font-size:.75rem;color:#f0a52e;letter-spacing:.08em}
 .stars small{color:var(--ink-soft);margin-left:.35em}
-.pname{font-family:var(--display);font-size:.95rem;font-weight:700;line-height:1.25}
+.pname{font-family:var(--display);font-weight:700;line-height:1.25}
 .pprice{font-family:var(--display);font-weight:700}
 .pprice small{font-size:.75rem;color:var(--ink-soft);font-weight:500}
-.qadd{position:absolute;left:.85rem;right:.85rem;bottom:.85rem;transform:translateY(150%);transition:transform .22s ease}
-.pcard:hover .qadd{transform:translateY(0)}
-.qadd .btn{width:100%;padding:.7em;font-size:.85rem}
+.pshow-info{display:flex;flex-direction:column;gap:.8rem}
+.pspecs{list-style:none;display:grid;gap:.5rem;font-size:.88rem;color:var(--ink-soft);margin-top:.2rem}
+.pspecs li{display:flex;gap:.5em;align-items:flex-start}
+.pspecs svg{width:16px;height:16px;flex:none;margin-top:.2em}
 
 /* ---------- 07 · Benefícios + números do rótulo ---------- */
 .sec-tint{background:#f1f1ea}
@@ -401,7 +393,9 @@ h3{font-size:1.1rem;font-weight:700}
 /* ============ DESKTOP ============ */
 @media(min-width:768px){
   .nav-d{display:flex}
-  .grid-p{grid-template-columns:repeat(4,1fr)}
+  .pshow{flex-direction:row;align-items:flex-start;gap:3rem}
+  .pshow-gallery{flex:1;max-width:420px}
+  .pshow-info{flex:1}
   .bene{grid-template-columns:repeat(4,1fr)}
   .kits{grid-template-columns:repeat(3,1fr);align-items:start}
   .kcard.best{transform:scale(1.04)}
@@ -441,7 +435,7 @@ h3{font-size:1.1rem;font-weight:700}
   <div class="wrap">
     <img class="logo" src="img/logo-letz.png" alt="Let'z Energy Gum">
     <nav class="nav-d">
-      <a href="#produtos">Produtos</a>
+      <a href="#produtos">O Produto</a>
       <a href="#oferta">Kits</a>
       <a href="#sobre">Sobre</a>
       <a href="#faq">Dúvidas</a>
@@ -480,7 +474,7 @@ h3{font-size:1.1rem;font-weight:700}
       </div>
       <div class="hero-ctas rv rv-d3">
         <a href="#oferta" class="btn btn-volt btn-block">Quero experimentar Let'z</a>
-        <a href="#produtos" class="btn btn-ghost btn-block">Ver produtos</a>
+        <a href="#produtos" class="btn btn-ghost btn-block">Conhecer o produto</a>
       </div>
       <p class="hero-note rv rv-d3">Sabor menta · 12 gomas por pacote · Pix ou cartão em até 3x</p>
     </div>
@@ -544,44 +538,41 @@ h3{font-size:1.1rem;font-weight:700}
   </div>
 </div>
 
-<!-- ══ 06 · VITRINE DE PRODUTOS ══ -->
-<!-- ⚠️ AJUSTAR preço real + link de checkout (Yampi) · Cards "Em breve" = espaço p/ novos sabores -->
+<!-- ══ 06 · SHOWCASE DO PRODUTO ══ -->
+<!-- ⚠️ AJUSTAR preço real + link de checkout (Yampi) -->
 <section class="sec" id="produtos">
   <div class="wrap">
-    <p class="eyebrow rv"><span class="dot"></span>Nossa linha</p>
-    <h2 class="rv rv-d1">Escolha a sua mascada</h2>
-    <div class="grid-p">
-      <div class="pcard rv">
-        <span class="badge">Mais vendido</span>
-        <div class="pmedia">
-          <img src="img/pacote-letz.png" alt="Let'z Energy Gum sabor menta">
-          <div class="swap"><img src="img/verso-letz.jpg" alt="Verso do pacote com tabela nutricional"></div>
+    <p class="eyebrow rv"><span class="dot"></span>O produto</p>
+    <h2 class="rv rv-d1">Uma goma. Toda a energia que você precisa.</h2>
+    <div class="pshow">
+      <div class="pshow-gallery rv">
+        <span class="badge">O 1º do Brasil</span>
+        <div class="pshow-media">
+          <img id="pMainImg" src="img/pacote-letz.png" alt="Let'z Energy Gum sabor menta">
         </div>
+        <div class="pthumbs">
+          <button class="pthumb active" data-img="img/pacote-letz.png" aria-label="Ver embalagem">
+            <img src="img/pacote-letz.png" alt="">
+          </button>
+          <button class="pthumb" data-img="img/verso-letz.jpg" aria-label="Ver tabela nutricional">
+            <img src="img/verso-letz.jpg" alt="">
+          </button>
+        </div>
+      </div>
+      <div class="pshow-info rv rv-d1">
         <div class="stars">★★★★★<small>(avaliações)</small></div>
-        <div class="pname">Let'z Energy Gum · Menta</div>
-        <div class="pprice">R$ 34,90 <small>· 12 gomas</small></div>
-        <div class="qadd"><a class="btn btn-pink" href="#oferta">Compra rápida</a></div>
-      </div>
-      <div class="pcard rv rv-d1">
-        <span class="badge soon">Em breve</span>
-        <div class="pmedia soon-ph"><span>Novo sabor</span></div>
-        <div class="stars" style="opacity:.35">★★★★★</div>
-        <div class="pname" style="opacity:.5">Sabor surpresa</div>
-        <div class="pprice" style="opacity:.5">R$ —</div>
-      </div>
-      <div class="pcard rv rv-d2">
-        <span class="badge soon">Em breve</span>
-        <div class="pmedia soon-ph"><span>Novo sabor</span></div>
-        <div class="stars" style="opacity:.35">★★★★★</div>
-        <div class="pname" style="opacity:.5">Sabor surpresa</div>
-        <div class="pprice" style="opacity:.5">R$ —</div>
-      </div>
-      <div class="pcard rv rv-d3">
-        <span class="badge soon">Em breve</span>
-        <div class="pmedia soon-ph"><span>Nova linha</span></div>
-        <div class="stars" style="opacity:.35">★★★★★</div>
-        <div class="pname" style="opacity:.5">Projeto secreto ⚡</div>
-        <div class="pprice" style="opacity:.5">R$ —</div>
+        <div class="pname" style="font-size:1.3rem">Let'z Energy Gum · Sabor Menta</div>
+        <div class="pprice" style="font-size:1.4rem">R$ 34,90 <small>· 12 gomas</small></div>
+        <a href="#oferta" class="btn btn-pink btn-block">Quero experimentar</a>
+        <ul class="pspecs">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>75mg de cafeína</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>180mg de taurina</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Vitamina B6 · 115% VD</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Vitamina B12 · 200% VD</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>8 kcal por porção</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Zero açúcar</li>
+        </ul>
+        <p class="muted" style="font-size:.78rem">Valores por porção de 3 gomas, conforme tabela nutricional da embalagem.</p>
       </div>
     </div>
   </div>
@@ -800,7 +791,7 @@ h3{font-size:1.1rem;font-weight:700}
     <div class="fcols">
       <div class="fcol">
         <details open>
-          <summary>Produtos</summary>
+          <summary>Comprar Let'z</summary>
           <ul>
             <li><a href="#produtos">Let'z Energy Gum · Menta</a></li>
             <li><a href="#oferta">Kit Energia (3 pacotes)</a></li>
@@ -894,6 +885,15 @@ let drag=false,startX=0,startL=0;
 rail.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startL=rail.scrollLeft;rail.classList.add('dragging');rail.setPointerCapture(e.pointerId)});
 rail.addEventListener('pointermove',e=>{if(drag)rail.scrollLeft=startL-(e.clientX-startX)});
 ['pointerup','pointercancel'].forEach(ev=>rail.addEventListener(ev,()=>{drag=false;rail.classList.remove('dragging')}));
+
+/* ---------- Troca de imagem do produto (thumbnail) ---------- */
+document.querySelectorAll('.pthumb').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.getElementById('pMainImg').src=t.dataset.img;
+    document.querySelectorAll('.pthumb').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+  });
+});
 </script>
 </body>
 </html>
