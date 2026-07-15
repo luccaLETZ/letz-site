@@ -271,6 +271,12 @@ h3{font-size:1.1rem;font-weight:700}
 .ravatar b{font-family:var(--display);font-size:.82rem;display:block}
 .ravatar small{font-size:.68rem;color:var(--ink-soft)}
 
+/* ---------- Quiz · entrada rápida (entre seção 10 e 11) ---------- */
+.quiz-time-badge{display:inline-block;margin-top:.6rem;background:var(--ink);color:var(--volt);font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.4em 1em;border-radius:999px}
+.quiz-entry-opts{display:grid;gap:.8rem;margin-top:1.8rem;max-width:520px;margin-left:auto;margin-right:auto}
+.quiz-entry-opt{background:var(--card);border:1.5px solid rgba(20,25,22,.10);border-radius:var(--r);padding:1.1rem 1.3rem;font-family:var(--display);font-weight:700;font-size:.95rem;cursor:pointer;transition:border-color .15s,transform .15s,background .15s,color .15s}
+.quiz-entry-opt:hover{border-color:var(--pink);background:var(--ink);color:var(--volt);transform:translateY(-2px)}
+
 /* ---------- 11 · Oferta ---------- */
 .kits{display:grid;gap:1.1rem;margin-top:2rem;text-align:left}
 .kcard{
@@ -296,6 +302,7 @@ h3{font-size:1.1rem;font-weight:700}
 .kcard ul{list-style:none;display:grid;gap:.45rem;font-size:.85rem;color:var(--ink-soft)}
 .kcard ul li{display:flex;gap:.5em;align-items:flex-start}
 .kcard ul svg{width:16px;height:16px;flex:none;margin-top:.2em}
+.kcard.qrec{outline:3px solid var(--pink);outline-offset:5px;box-shadow:0 0 0 6px rgba(255,20,147,.12),var(--shadow)}
 .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem}
 .trust>div{background:var(--card);border-radius:var(--r);padding:1.1rem .8rem;text-align:center;box-shadow:var(--shadow)}
 .trust svg{width:26px;height:26px;margin:0 auto .5rem}
@@ -321,7 +328,7 @@ h3{font-size:1.1rem;font-weight:700}
   font-family:var(--body);
 }
 .news input:focus{box-shadow:0 0 0 3px var(--volt)}
-.news small{font-size:.68rem;color:rgba(249,249,244,.5)}
+.news .quiz-lgpd{max-width:400px;margin:0 auto;justify-content:center;color:rgba(249,249,244,.65)}
 
 /* ---------- 13 · FAQ ---------- */
 .faq{max-width:720px;margin:1.8rem auto 0;display:grid;gap:.7rem}
@@ -370,6 +377,46 @@ h3{font-size:1.1rem;font-weight:700}
 .satc .info small{font-size:.7rem;color:var(--ink-soft)}
 .satc .btn{padding:.75em 1.2em;font-size:.86rem}
 
+/* ---------- Overlay: Popup de saída ---------- */
+.modal-backdrop{position:fixed;inset:0;z-index:90;background:rgba(20,25,22,.55);display:flex;align-items:center;justify-content:center;padding:var(--pad);opacity:0;transition:opacity .25s ease}
+.modal-backdrop.show{opacity:1}
+.modal-backdrop[hidden]{display:none}
+.modal{background:var(--card);border-radius:var(--r-lg);box-shadow:0 24px 60px rgba(20,25,22,.35);padding:2rem 1.6rem;max-width:400px;width:100%;position:relative;transform:translateY(16px) scale(.97);transition:transform .25s ease}
+.modal-backdrop.show .modal{transform:none}
+.modal-close{position:absolute;top:.9rem;right:.9rem;width:34px;height:34px;border-radius:50%;border:none;background:var(--paper);cursor:pointer;font-size:1rem;line-height:1}
+.modal h3{font-size:1.35rem;margin-bottom:.5rem}
+.modal .muted{font-size:.9rem;margin-bottom:1.4rem}
+.modal-actions{display:flex;flex-direction:column;gap:.6rem}
+.modal-later{margin-top:1.1rem;background:none;border:none;text-decoration:underline;color:var(--ink-soft);font-size:.78rem;cursor:pointer;width:100%;text-align:center}
+.modal-later-form{display:flex;flex-direction:column;gap:.6rem}
+.modal-later-form input{padding:.9em 1.2em;border-radius:999px;border:1.5px solid rgba(20,25,22,.15);font-size:.9rem;font-family:var(--body)}
+
+/* ---------- Overlay: Quiz ---------- */
+.quiz-ov{position:fixed;inset:0;z-index:95;background:var(--paper);display:flex;flex-direction:column;padding:1.2rem var(--pad) 2rem;overflow-y:auto}
+.quiz-ov[hidden]{display:none}
+.quiz-head{display:flex;align-items:center;gap:.8rem}
+.quiz-back,.quiz-close{width:38px;height:38px;border-radius:50%;border:none;background:var(--card);box-shadow:var(--shadow);cursor:pointer;font-size:1.1rem;flex:none}
+.quiz-progress{flex:1;height:6px;border-radius:999px;background:rgba(20,25,22,.08);overflow:hidden}
+.quiz-progress-bar{height:100%;background:var(--pink);border-radius:999px;transition:width .3s ease;width:0%}
+.quiz-step-label{font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);margin-top:1rem}
+.quiz-body{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:520px;margin:0 auto;width:100%;gap:1.1rem;padding:2rem 0}
+.quiz-body h2{font-size:clamp(1.4rem,6vw,2rem)}
+.quiz-opts{display:grid;gap:.7rem}
+.quiz-opt{text-align:left;background:var(--card);border:1.5px solid rgba(20,25,22,.10);border-radius:var(--r);padding:1rem 1.2rem;font-family:var(--body);font-size:.95rem;font-weight:600;cursor:pointer;transition:border-color .15s,transform .15s}
+.quiz-opt:hover{border-color:var(--pink);transform:translateX(3px)}
+.quiz-opt.sel{border-color:var(--pink);background:rgba(255,20,147,.06)}
+.quiz-input{padding:1em 1.3em;border-radius:999px;border:1.5px solid rgba(20,25,22,.15);font-size:1rem;font-family:var(--body)}
+.quiz-input:focus{outline:none;border-color:var(--pink)}
+.quiz-restart{align-self:center;background:none;border:none;text-decoration:underline;color:var(--ink-soft);font-size:.78rem;cursor:pointer;margin-top:1rem}
+.quiz-lgpd{display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:var(--ink-soft)}
+.quiz-lgpd input{margin-top:.2rem;flex:none}
+.quiz-skip{background:none;border:none;text-decoration:underline;color:var(--ink-soft);font-size:.8rem;cursor:pointer;align-self:center}
+.quiz-result-badge{font-family:var(--display);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--pink)}
+.quiz-reasons{list-style:none;display:grid;gap:.5rem;font-size:.9rem;color:var(--ink-soft)}
+.quiz-reasons li{display:flex;gap:.5em;align-items:flex-start}
+.quiz-reasons svg{width:16px;height:16px;flex:none;margin-top:.2em}
+.quiz-warn{background:rgba(255,20,147,.08);border-radius:var(--r);padding:.9rem 1rem;font-size:.82rem;color:var(--ink-soft)}
+
 /* ---------- Voltar ao topo ---------- */
 .top{
   position:fixed;right:1rem;bottom:5.6rem;z-index:65;
@@ -396,6 +443,8 @@ h3{font-size:1.1rem;font-weight:700}
   .pshow{flex-direction:row;align-items:flex-start;gap:3rem}
   .pshow-gallery{flex:1;max-width:420px}
   .pshow-info{flex:1}
+  .quiz-entry-opts{grid-template-columns:repeat(2,1fr)}
+  .quiz-body{max-width:600px}
   .bene{grid-template-columns:repeat(4,1fr)}
   .kits{grid-template-columns:repeat(3,1fr);align-items:start}
   .kcard.best{transform:scale(1.04)}
@@ -666,6 +715,21 @@ h3{font-size:1.1rem;font-weight:700}
   </div>
 </section>
 
+<!-- ══ QUIZ · ENTRADA RÁPIDA (entre seção 10 e 11) ══ -->
+<section class="sec" id="quiz-entrada">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rv" style="justify-content:center;display:flex"><span class="dot"></span>Ainda não sabe qual é o seu?</p>
+    <h2 class="rv rv-d1">Qual é seu principal momento de baixa energia?</h2>
+    <span class="quiz-time-badge rv rv-d1">⏱ 60 segundos</span>
+    <div class="quiz-entry-opts">
+      <button class="quiz-entry-opt rv" data-momento="trabalho_estudos">Trabalho ou estudos</button>
+      <button class="quiz-entry-opt rv rv-d1" data-momento="pre_treino">Antes do treino</button>
+      <button class="quiz-entry-opt rv rv-d2" data-momento="pos_almoco">Depois do almoço</button>
+      <button class="quiz-entry-opt rv rv-d3" data-momento="eventos">Eventos e rotina intensa</button>
+    </div>
+  </div>
+</section>
+
 <!-- ══ 11 · OFERTA (kits) ══ -->
 <!-- ⚠️ AJUSTAR PREÇOS REAIS + LINKS DE CHECKOUT (Yampi) em cada botão -->
 <section class="sec sec-tint" id="oferta">
@@ -675,7 +739,7 @@ h3{font-size:1.1rem;font-weight:700}
     <p class="muted rv rv-d2" style="margin-top:.5rem">Cada pacote tem 12 gomas sabor menta — até 12 momentos de "salvou meu dia".</p>
 
     <div class="kits">
-      <div class="kcard rv" id="pre-treino">
+      <div class="kcard rv" id="pre-treino" data-plan="experimente">
         <div class="kmedia"><img src="img/pacote-letz.png" alt="1 pacote Let'z"></div>
         <h3>Experimente</h3>
         <span class="kqty">1 pacote · 12 gomas</span>
@@ -687,7 +751,7 @@ h3{font-size:1.1rem;font-weight:700}
         <a href="#" class="btn btn-ghost btn-block">Quero experimentar</a>
       </div>
 
-      <div class="kcard best rv rv-d1">
+      <div class="kcard best rv rv-d1" data-plan="kit">
         <span class="kflag">⚡ Mais vendido</span>
         <div class="kmedia multi"><img src="img/pacote-letz.png" alt="Kit 3 pacotes Let'z"></div>
         <h3>Kit Energia</h3>
@@ -703,7 +767,7 @@ h3{font-size:1.1rem;font-weight:700}
         <a href="#" class="btn btn-pink btn-block">Garantir meu kit</a>
       </div>
 
-      <div class="kcard rv rv-d2">
+      <div class="kcard rv rv-d2" data-plan="assinatura">
         <div class="kmedia"><img src="img/pacote-letz.png" alt="Assinatura Let'z"></div>
         <h3>Assinatura</h3>
         <span class="kqty">3 pacotes todo mês</span>
@@ -741,11 +805,13 @@ h3{font-size:1.1rem;font-weight:700}
     <div class="news rv">
       <h2>Ganhe <span class="hl">10% OFF</span> na primeira mascada</h2>
       <p>Deixa teu e-mail que a gente manda o cupom — e nada de spam, prometido.</p>
-      <form onsubmit="return false">
-        <input type="email" placeholder="Seu melhor e-mail" aria-label="E-mail" required>
-        <button class="btn btn-volt" type="submit">Quero o cupom</button>
+      <form id="newsForm" onsubmit="return false">
+        <input type="email" id="newsEmail" placeholder="Seu melhor e-mail" aria-label="E-mail" required>
+        <button class="btn btn-volt" type="submit" id="newsSubmit" disabled>Quero o cupom</button>
       </form>
-      <small>Ao enviar, você concorda em receber nossas novidades. Pode sair quando quiser.</small>
+      <label class="quiz-lgpd">
+        <input type="checkbox" id="newsLgpd"> Aceito receber comunicações da Let'z e entendo que posso cancelar quando quiser.
+      </label>
     </div>
   </div>
 </section>
@@ -838,6 +904,41 @@ h3{font-size:1.1rem;font-weight:700}
 <!-- ══ Voltar ao topo ══ -->
 <button class="top" id="topBtn" aria-label="Voltar ao topo">↑</button>
 
+<!-- ══ OVERLAY: POPUP DE SAÍDA ══ -->
+<div class="modal-backdrop" id="exitBackdrop" hidden>
+  <div class="modal" id="exitModal" role="dialog" aria-modal="true" aria-labelledby="exitTitle" aria-describedby="exitDesc" tabindex="-1">
+    <button class="modal-close" id="exitClose" aria-label="Fechar">✕</button>
+    <div id="exitDefault">
+      <h3 id="exitTitle">Antes de sair, quer ajuda para escolher?</h3>
+      <p id="exitDesc" class="muted">A maioria das pessoas encontra o melhor plano em menos de 60 segundos.</p>
+      <div class="modal-actions">
+        <button class="btn btn-pink btn-block" data-exit-action="quiz">Ver meu plano</button>
+        <a href="#oferta" class="btn btn-ghost btn-block" data-exit-action="oferta">Ver preços</a>
+        <a href="#produtos" class="btn btn-ghost btn-block" data-exit-action="produtos">Conhecer o produto</a>
+      </div>
+      <button class="modal-later" id="exitLaterBtn">Continuar depois — salvar minha recomendação</button>
+    </div>
+    <form id="exitLaterForm" class="modal-later-form" hidden onsubmit="return false">
+      <label for="exitLaterEmail" class="muted" style="font-size:.85rem">A gente te manda a recomendação por e-mail.</label>
+      <input type="email" id="exitLaterEmail" placeholder="Seu melhor e-mail" required>
+      <label class="quiz-lgpd"><input type="checkbox" id="exitLaterLgpd"> Aceito receber comunicações da Let'z e entendo que posso cancelar quando quiser.</label>
+      <button class="btn btn-dark btn-block" type="submit" id="exitLaterSubmit" disabled>Salvar minha recomendação</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══ OVERLAY: QUIZ ══ -->
+<div class="quiz-ov" id="quizOv" hidden role="dialog" aria-modal="true" aria-labelledby="quizStepLabel" tabindex="-1">
+  <div class="quiz-head">
+    <button class="quiz-back" id="quizBack" aria-label="Voltar">←</button>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar"></div></div>
+    <button class="quiz-close" id="quizClose" aria-label="Fechar">✕</button>
+  </div>
+  <p class="quiz-step-label" id="quizStepLabel">Etapa 1 de 7</p>
+  <div class="quiz-body" id="quizBody"></div>
+  <button class="quiz-restart" id="quizRestart">Recomeçar</button>
+</div>
+
 <script>
 /* ---------- Header: sombra + hide/show ---------- */
 const header=document.getElementById('topo');
@@ -893,6 +994,429 @@ document.querySelectorAll('.pthumb').forEach(t=>{
     document.querySelectorAll('.pthumb').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
   });
+});
+
+/* ============================================================
+   TRACKING + LEAD (placeholders)
+   ============================================================ */
+function trackEvent(name,data){
+  console.log('[track]',name,data||{});
+  // TODO: plugar Meta Pixel — quiz_complete vira fbq('track','Lead').
+  // NUNCA passar e-mail/WhatsApp/nome aqui: PII no Meta só entra via Advanced Matching
+  // com hash SHA-256. Este trackEvent recebe só plano e flags (ex.: {plano,saved:true}).
+  // if(window.fbq && name==='quiz_complete') fbq('track','Lead', data);
+}
+
+// TODO: preencher com a URL do webhook n8n pra receber os leads do quiz/popup/newsletter
+const LEAD_WEBHOOK_URL='';
+function enviarLead(dados){
+  if(!LEAD_WEBHOOK_URL){
+    console.log('[lead] LEAD_WEBHOOK_URL vazio — lead não enviado, só logado:',dados);
+    return Promise.resolve();
+  }
+  return fetch(LEAD_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(dados)})
+    .catch(err=>console.error('[lead] falha ao enviar',err));
+}
+
+/* ---------- Helpers compartilhados ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function isValidEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+function prefersReducedMotion(){return matchMedia('(prefers-reduced-motion: reduce)').matches}
+function smoothScrollTo(el,block='start'){el.scrollIntoView({behavior:prefersReducedMotion()?'auto':'smooth',block})}
+function getFocusable(container){
+  return [...container.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+    .filter(el=>el.offsetParent!==null);
+}
+function attachOverlayA11y(panel,closeFn){
+  const prevFocus=document.activeElement;
+  function keyHandler(e){
+    if(e.key==='Escape'){closeFn();return}
+    if(e.key==='Tab'){
+      const f=getFocusable(panel);
+      if(!f.length)return;
+      const first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  }
+  document.addEventListener('keydown',keyHandler);
+  panel.focus();
+  return {prevFocus,detach:()=>document.removeEventListener('keydown',keyHandler)};
+}
+function updateScrollLock(){
+  document.body.style.overflow=(!exitBackdrop.hidden||!quizOv.hidden)?'hidden':'';
+}
+
+/* ============================================================
+   FEATURE A — POPUP DE SAÍDA
+   ============================================================ */
+const EXIT_KEY='letz_exit_intent_shown';
+const exitBackdrop=document.getElementById('exitBackdrop');
+const exitModal=document.getElementById('exitModal');
+const exitDefault=document.getElementById('exitDefault');
+const exitLaterForm=document.getElementById('exitLaterForm');
+const exitLaterEmail=document.getElementById('exitLaterEmail');
+const exitLaterLgpd=document.getElementById('exitLaterLgpd');
+const exitLaterSubmit=document.getElementById('exitLaterSubmit');
+let exitA11y=null;
+
+function openExitModal(trigger){
+  if(localStorage.getItem(EXIT_KEY))return;
+  if(!quizOv.hidden)return;
+  localStorage.setItem(EXIT_KEY,'1');
+  exitBackdrop.hidden=false;
+  updateScrollLock();
+  requestAnimationFrame(()=>exitBackdrop.classList.add('show'));
+  exitA11y=attachOverlayA11y(exitModal,closeExitModal);
+  trackEvent('popup_view',{trigger});
+}
+function closeExitModal(){
+  exitBackdrop.classList.remove('show');
+  if(exitA11y){exitA11y.detach();exitA11y.prevFocus&&exitA11y.prevFocus.focus();exitA11y=null}
+  setTimeout(()=>{exitBackdrop.hidden=true;updateScrollLock()},250);
+}
+document.getElementById('exitClose').addEventListener('click',closeExitModal);
+exitBackdrop.addEventListener('click',e=>{if(e.target===exitBackdrop)closeExitModal()});
+exitDefault.querySelectorAll('[data-exit-action]').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    const action=btn.dataset.exitAction;
+    trackEvent('popup_click',{action});
+    if(action==='quiz'){
+      closeExitModal();
+      openQuiz({source:'exit_popup'});
+    } else {
+      // body fica com overflow:hidden até o fade-out da modal (250ms) terminar;
+      // navegação nativa por âncora não rolaria nada nesse intervalo
+      e.preventDefault();
+      const target=document.getElementById(btn.getAttribute('href').slice(1));
+      closeExitModal();
+      setTimeout(()=>smoothScrollTo(target),260);
+    }
+  });
+});
+document.getElementById('exitLaterBtn').addEventListener('click',()=>{
+  trackEvent('popup_click',{action:'later'});
+  exitDefault.hidden=true;
+  exitLaterForm.hidden=false;
+  exitLaterEmail.focus();
+});
+function validateExitLater(){exitLaterSubmit.disabled=!(isValidEmail(exitLaterEmail.value.trim())&&exitLaterLgpd.checked)}
+exitLaterEmail.addEventListener('input',validateExitLater);
+exitLaterLgpd.addEventListener('change',validateExitLater);
+exitLaterForm.addEventListener('submit',()=>{
+  if(exitLaterSubmit.disabled)return;
+  const email=exitLaterEmail.value.trim();
+  enviarLead({tipo:'exit_intent_email',email});
+  trackEvent('popup_click',{action:'later_save'});
+  exitLaterForm.innerHTML='<p class="muted" style="font-size:.9rem">Prontinho — vamos te mandar a recomendação por e-mail.</p>';
+  setTimeout(closeExitModal,1800);
+});
+
+function initExitIntent(){
+  if(localStorage.getItem(EXIT_KEY))return;
+  let armed=false;
+  setTimeout(()=>{armed=true},8000);
+  let maxScroll=scrollY,scrollPrev=scrollY,inactivityTimer;
+  const docH=()=>document.documentElement.scrollHeight-innerHeight;
+  function resetInactivity(){
+    clearTimeout(inactivityTimer);
+    inactivityTimer=setTimeout(()=>{if(armed)openExitModal('inactivity')},35000);
+  }
+  function onScroll(){
+    maxScroll=Math.max(maxScroll,scrollY);
+    const pct=docH()>0?maxScroll/docH():0;
+    if(armed&&pct>=.4&&(scrollPrev-scrollY)>120)openExitModal('scroll_back');
+    scrollPrev=scrollY;
+    resetInactivity();
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  document.addEventListener('touchstart',resetInactivity,{passive:true});
+  document.addEventListener('touchmove',resetInactivity,{passive:true});
+  document.addEventListener('mouseleave',e=>{if(armed&&e.clientY<=0)openExitModal('mouse_leave')});
+  resetInactivity();
+}
+
+/* ============================================================
+   FEATURE B — QUIZ
+   ============================================================ */
+const QUIZ_KEY='letz_quiz';
+const QUIZ_QUESTIONS=[
+  {id:'nome',type:'text',placeholder:'Seu nome',question:()=>'Qual é seu nome?'},
+  {id:'momento',type:'choice',question:a=>(a.nome?`${esc(a.nome)}, em`:'Em')+' qual momento você mais precisa de energia?',
+    options:[
+      {value:'trabalho_estudos',label:'Trabalho ou estudos'},
+      {value:'pre_treino',label:'Antes do treino'},
+      {value:'pos_almoco',label:'Depois do almoço'},
+      {value:'eventos',label:'Eventos, viagens ou rotina intensa'},
+      {value:'reduzir_cafe',label:'Quero reduzir café ou energético'},
+    ]},
+  {id:'energia',type:'choice',question:()=>'Como está sua energia na maior parte dos dias?',
+    options:[
+      {value:'baixa',label:'Baixa'},
+      {value:'oscilando',label:'Oscilando'},
+      {value:'boa_performance',label:'Boa, mas quero performance'},
+      {value:'alta_praticidade',label:'Alta, só quero praticidade'},
+    ]},
+  {id:'frequencia',type:'choice',question:()=>"Com que frequência você usaria Let'z?",
+    options:[
+      {value:'1_2_semana',label:'1 a 2 vezes por semana'},
+      {value:'3_4_semana',label:'3 a 4 vezes por semana'},
+      {value:'quase_todos',label:'Quase todos os dias'},
+      {value:'mais_de_uma_dia',label:'Mais de uma vez ao dia'},
+    ]},
+  {id:'cafeina',type:'choice',question:()=>'Você é sensível à cafeína?',
+    options:[
+      {value:'muito_sensivel',label:'Sim, sou bem sensível'},
+      {value:'um_pouco',label:'Um pouco'},
+      {value:'nao',label:'Não'},
+      {value:'nao_sei',label:'Não sei'},
+    ]},
+  {id:'beneficio',type:'choice',question:()=>'Qual benefício mais importa para você?',
+    options:[
+      {value:'foco',label:'Foco'},
+      {value:'disposicao',label:'Disposição'},
+      {value:'praticidade',label:'Praticidade'},
+      {value:'evitar_acucar',label:'Evitar açúcar'},
+      {value:'substituir_energetico',label:'Substituir bebidas energéticas'},
+    ]},
+  {id:'compra',type:'choice',question:()=>'Você prefere comprar como?',
+    options:[
+      {value:'testar_uma_vez',label:'Testar uma vez'},
+      {value:'todo_mes',label:'Receber todo mês'},
+      {value:'custo_beneficio',label:'Quero o melhor custo-benefício'},
+      {value:'decidindo',label:'Ainda estou decidindo'},
+    ]},
+];
+
+const quizOv=document.getElementById('quizOv');
+const quizBody=document.getElementById('quizBody');
+const quizBar=document.getElementById('quizBar');
+const quizStepLabel=document.getElementById('quizStepLabel');
+const quizBackBtn=document.getElementById('quizBack');
+const quizCloseBtn=document.getElementById('quizClose');
+const quizRestartBtn=document.getElementById('quizRestart');
+let quizState=loadQuizState();
+let quizA11y=null;
+
+function loadQuizState(){
+  try{const raw=localStorage.getItem(QUIZ_KEY);if(raw)return JSON.parse(raw)}catch(e){}
+  return {step:0,answers:{}};
+}
+function saveQuizState(){localStorage.setItem(QUIZ_KEY,JSON.stringify(quizState))}
+
+function openQuiz(opts={}){
+  const {source='manual',momento}=opts;
+  let resumed=false;
+  if(momento){
+    quizState={step:2,answers:{momento}};
+    saveQuizState();
+  } else {
+    resumed=quizState.step>0||Object.keys(quizState.answers).length>0;
+  }
+  quizOv.hidden=false;
+  updateScrollLock();
+  quizA11y=attachOverlayA11y(quizOv,closeQuiz);
+  trackEvent('quiz_start',{source,resumed});
+  renderQuizStep();
+}
+function closeQuiz(){
+  quizOv.hidden=true;
+  updateScrollLock();
+  if(quizA11y){quizA11y.detach();quizA11y.prevFocus&&quizA11y.prevFocus.focus();quizA11y=null}
+  if(location.hash==='#quiz')history.replaceState(null,'',location.pathname+location.search);
+}
+quizCloseBtn.addEventListener('click',closeQuiz);
+quizBackBtn.addEventListener('click',()=>{
+  if(quizState.step<=0){closeQuiz();return}
+  quizState.step--;
+  saveQuizState();
+  renderQuizStep();
+});
+quizRestartBtn.addEventListener('click',()=>{
+  quizState={step:0,answers:{}};
+  saveQuizState();
+  renderQuizStep();
+});
+
+function answerQuestion(id,value){
+  quizState.answers[id]=value;
+  quizState.step++;
+  saveQuizState();
+  trackEvent('quiz_step_answer',{questionId:id,value});
+  renderQuizStep();
+}
+
+function renderQuizStep(){
+  const total=QUIZ_QUESTIONS.length;
+  const step=quizState.step;
+  quizBar.style.width=Math.min(step,total)/total*100+'%';
+  if(step<total){
+    quizStepLabel.hidden=false;
+    quizStepLabel.textContent=`Etapa ${step+1} de ${total}`;
+    renderQuestion(QUIZ_QUESTIONS[step]);
+  } else if(step===total){
+    quizStepLabel.hidden=true;
+    renderLeadCapture();
+  } else {
+    quizStepLabel.hidden=true;
+    renderResult();
+  }
+}
+
+function renderQuestion(q){
+  const a=quizState.answers;
+  if(q.type==='text'){
+    quizBody.innerHTML=`
+      <h2>${q.question(a)}</h2>
+      <input class="quiz-input" id="quizTextInput" type="text" placeholder="${q.placeholder}" value="${esc(a[q.id]||'')}" autocomplete="off">
+      <button class="btn btn-pink btn-block" id="quizTextNext">Continuar</button>
+    `;
+    const input=document.getElementById('quizTextInput');
+    input.focus();
+    function submit(){const val=input.value.trim();if(val)answerQuestion(q.id,val)}
+    document.getElementById('quizTextNext').addEventListener('click',submit);
+    input.addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+  } else {
+    quizBody.innerHTML=`
+      <h2>${q.question(a)}</h2>
+      <div class="quiz-opts">${q.options.map(o=>`<button class="quiz-opt${a[q.id]===o.value?' sel':''}" data-value="${o.value}">${o.label}</button>`).join('')}</div>
+    `;
+    quizBody.querySelectorAll('.quiz-opt').forEach(btn=>{
+      btn.addEventListener('click',()=>answerQuestion(q.id,btn.dataset.value));
+    });
+  }
+}
+
+function renderLeadCapture(){
+  quizBody.innerHTML=`
+    <h2>Seu plano personalizado está pronto.</h2>
+    <input class="quiz-input" id="quizNome" type="text" placeholder="Seu nome" value="${esc(quizState.answers.nome||'')}" autocomplete="off">
+    <input class="quiz-input" id="quizEmail" type="email" placeholder="Seu melhor e-mail" required>
+    <input class="quiz-input" id="quizWhats" type="tel" placeholder="WhatsApp (opcional)">
+    <label class="quiz-lgpd"><input type="checkbox" id="quizLgpd"> Aceito receber comunicações da Let'z e entendo que posso cancelar quando quiser.</label>
+    <button class="btn btn-pink btn-block" id="quizLeadSubmit" disabled>Ver meu resultado</button>
+    <button class="quiz-skip" id="quizSkip">Ver resultado sem salvar</button>
+  `;
+  const nomeInput=document.getElementById('quizNome');
+  const email=document.getElementById('quizEmail'),whats=document.getElementById('quizWhats'),
+        lgpd=document.getElementById('quizLgpd'),submitBtn=document.getElementById('quizLeadSubmit');
+  function validate(){submitBtn.disabled=!(isValidEmail(email.value.trim())&&lgpd.checked)}
+  email.addEventListener('input',validate);
+  lgpd.addEventListener('change',validate);
+  submitBtn.addEventListener('click',()=>{
+    if(submitBtn.disabled)return;
+    quizState.answers.nome=nomeInput.value.trim()||quizState.answers.nome||'';
+    saveQuizState();
+    const dados={nome:quizState.answers.nome||'',email:email.value.trim(),whatsapp:whats.value.trim(),
+      respostas:quizState.answers,plano:recommendPlan(quizState.answers).plano};
+    trackEvent('quiz_complete',{plano:dados.plano,saved:true});
+    enviarLead(dados);
+    quizState.step++;saveQuizState();renderQuizStep();
+  });
+  document.getElementById('quizSkip').addEventListener('click',()=>{
+    quizState.answers.nome=nomeInput.value.trim()||quizState.answers.nome||'';
+    quizState.step++;saveQuizState();renderQuizStep();
+  });
+}
+
+function recommendPlan(a){
+  // Preferência explícita de teste não é sobrescrita por momento/frequência
+  if(a.compra==='testar_uma_vez')return {plano:'experimente',nomePlano:'Experimente'};
+  let level={'1_2_semana':0,'3_4_semana':1,'quase_todos':2,'mais_de_uma_dia':2}[a.frequencia]??0;
+  if(a.compra==='todo_mes'||a.compra==='custo_beneficio')level=2;
+  if(a.momento==='trabalho_estudos')level=Math.max(level,1);
+  if(a.momento==='pre_treino'&&a.cafeina!=='muito_sensivel')level=Math.min(level+1,2);
+  if(a.cafeina==='muito_sensivel')level=Math.min(level,1);
+  const key=['experimente','kit','assinatura'][level];
+  const nomes={experimente:'Experimente',kit:'Kit Energia',assinatura:'Assinatura'};
+  return {plano:key,nomePlano:nomes[key]};
+}
+
+function generateReasons(a,planoKey){
+  const reasons=[];
+  const momentoTxt={
+    trabalho_estudos:'Sua rotina de trabalho ou estudos pede energia sempre à mão.',
+    pre_treino:"Pra antes do treino, Let'z entra em ação rápido e não pesa no estômago.",
+    pos_almoco:'Aquela baixa depois do almoço tem solução prática — é só mascar.',
+    eventos:'Rotina intensa de eventos e viagens pede energia que cabe no bolso.',
+    reduzir_cafe:"Você quer reduzir café ou energético — Let'z é uma alternativa mais leve.",
+  };
+  const beneficioTxt={
+    foco:'Foco é sua prioridade — 75mg de cafeína por porção ajudam a manter o ritmo.',
+    disposicao:'Disposição é o que você busca — taurina e B12 entram nessa conta.',
+    praticidade:'Você valoriza praticidade — sem preparo, sem lata, cabe no bolso.',
+    evitar_acucar:"Você quer evitar açúcar — Let'z é zero açúcar por padrão.",
+    substituir_energetico:"Você quer substituir energéticos — Let'z entrega isso numa goma só.",
+  };
+  const planoTxt={
+    experimente:'Perfeito pra sentir o efeito antes de decidir a frequência ideal.',
+    kit:'Sua rotina pede consistência — 3 pacotes garantem o melhor custo por goma.',
+    assinatura:'Você usa com frequência — a assinatura garante que a energia nunca falte.',
+  };
+  if(momentoTxt[a.momento])reasons.push(momentoTxt[a.momento]);
+  if(beneficioTxt[a.beneficio])reasons.push(beneficioTxt[a.beneficio]);
+  if(planoTxt[planoKey])reasons.push(planoTxt[planoKey]);
+  if(a.energia==='baixa'||a.energia==='oscilando')reasons.push('Sua energia anda oscilando — 75mg de cafeína por porção ajudam quando você mais precisa.');
+  return reasons.slice(0,4);
+}
+
+function highlightPlan(planoKey){
+  document.querySelectorAll('.kcard').forEach(c=>c.classList.remove('qrec'));
+  const card=document.querySelector(`.kcard[data-plan="${planoKey}"]`);
+  if(card){card.classList.add('qrec');setTimeout(()=>smoothScrollTo(card,'center'),400)}
+}
+
+function renderResult(){
+  const a=quizState.answers;
+  const {plano,nomePlano}=recommendPlan(a);
+  const reasons=generateReasons(a,plano);
+  const nome=a.nome?esc(a.nome)+', ':'';
+  quizBody.innerHTML=`
+    <p class="quiz-result-badge">Seu resultado</p>
+    <h2>${nome}seu plano Let'z ideal é o ${nomePlano}.</h2>
+    <ul class="quiz-reasons">${reasons.map(r=>`<li><svg viewBox="0 0 24 24" fill="none" stroke="#3BDB8B" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>${r}</li>`).join('')}</ul>
+    ${a.cafeina==='muito_sensivel'?'<p class="quiz-warn">Comece devagar e respeite a recomendação diária de até 3 gomas.</p>':''}
+    <button class="btn btn-pink btn-block" id="quizCta">Quero esse plano</button>
+    <button class="quiz-skip" id="quizSeeAll">Ver todos os planos</button>
+  `;
+  document.getElementById('quizCta').addEventListener('click',()=>{
+    // TODO: quando os links Yampi reais substituírem os href="#" da seção 11,
+    // trocar este clique pra ir direto pro checkout do plano recomendado
+    closeQuiz();
+    highlightPlan(plano);
+  });
+  document.getElementById('quizSeeAll').addEventListener('click',()=>{
+    closeQuiz();
+    smoothScrollTo(document.getElementById('oferta'));
+  });
+  trackEvent('result_view',{plano});
+}
+
+/* ---------- Entrada rápida do quiz ---------- */
+document.querySelectorAll('.quiz-entry-opt').forEach(btn=>{
+  btn.addEventListener('click',()=>openQuiz({source:'quiz_entry',momento:btn.dataset.momento}));
+});
+
+/* ---------- Deep-link #quiz ---------- */
+function checkQuizHash(){if(location.hash==='#quiz')openQuiz({source:'hash'})}
+checkQuizHash();
+addEventListener('hashchange',checkQuizHash);
+
+initExitIntent();
+
+/* ---------- Newsletter (seção 12) ---------- */
+const newsForm=document.getElementById('newsForm');
+const newsEmail=document.getElementById('newsEmail');
+const newsLgpd=document.getElementById('newsLgpd');
+const newsSubmit=document.getElementById('newsSubmit');
+function validateNews(){newsSubmit.disabled=!(isValidEmail(newsEmail.value.trim())&&newsLgpd.checked)}
+newsEmail.addEventListener('input',validateNews);
+newsLgpd.addEventListener('change',validateNews);
+newsForm.addEventListener('submit',()=>{
+  if(newsSubmit.disabled)return;
+  enviarLead({tipo:'newsletter',email:newsEmail.value.trim()});
+  newsForm.innerHTML='<p style="color:var(--paper);font-size:.9rem">Cupom a caminho do seu e-mail 🎉</p>';
+  newsLgpd.parentElement.hidden=true;
 });
 </script>
 </body>
